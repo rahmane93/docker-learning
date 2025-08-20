@@ -1,0 +1,32 @@
+Installation de Docker
+
+1. Désinstallation de toutes les anciennes versions
+# Ubuntu / Debian (le sudo n'est pas forcément obligatoire)
+sudo apt-get remove docker docker-engine docker.io containerd runc
+
+#CentOS / RedHat
+sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+
+#Fedora
+sudo dnf remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+
+
+2. Télécharger l'installeur officiel
+# Ubuntu
+sudo apt-get update && sudo apt-get install curl
+
+
+# CentOS / RedHat
+sudo yum install curl
+
+#Fedora
+sudo dnf install curl
+
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+
+
+3. Ajouter l'utilisateur au groupe docker
+#Ubuntu
+sudo usermod -aG docker [NOM_UTILISATEUR]

@@ -1,0 +1,45 @@
+networks:
+    public_net:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: "192.168.0.0/24"
+
+services:
+    img_apache_server1:
+        container_name: apache_server_1
+        build: ./apache/server1/
+        expose:
+            - 80
+        networks:
+            public_net:
+                ipv4_address: "192.168.0.11"
+    
+    img_apache_server2:
+        container_name: apache_server_2
+        build: ./apache/server2/
+        expose:
+            - 80
+        networks:
+            public_net:
+                ipv4_address: "192.168.0.22"
+    img_apache_server3:
+        container_name: apache_server_3
+        build: ./apache/server3/
+        expose:
+            - 80
+        networks:
+            public_net:
+                ipv4_address: "192.168.0.33"
+    
+    img_haproxy:
+        container_name: haproxy_server
+        build: ./haproxy/
+        expose:
+            - 80
+        ports:
+            - '80:80'
+        networks:
+            public_net:
+                ipv4_address: "192.168.0.44"
